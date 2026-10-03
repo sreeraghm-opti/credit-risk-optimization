@@ -28,6 +28,7 @@ from sklearn.metrics import (
     average_precision_score,
     brier_score_loss,
     roc_auc_score,
+    roc_curve,
 )
 from sklearn.model_selection import StratifiedKFold, cross_val_predict
 from sklearn.pipeline import Pipeline
@@ -71,8 +72,15 @@ def make_preprocessor(numeric_features):
 
 
 def metric_values(y_true, probabilities):
+    roc_auc = roc_auc_score(y_true, probabilities)
+    fpr, tpr, _ = roc_curve(y_true, probabilities)
+    ks_statistic = float(np.max(tpr - fpr))
+    gini = 2 * roc_auc - 1
+
     return {
-        "roc_auc": roc_auc_score(y_true, probabilities),
+        "roc_auc": roc_auc,
+        "gini": gini,
+        "ks_statistic": ks_statistic,
         "average_precision": average_precision_score(y_true, probabilities),
         "brier_score": brier_score_loss(y_true, probabilities),
     }
@@ -237,6 +245,10 @@ def main():
             f"  ROC-AUC={metrics['roc_auc']:.4f} "
             f"(95% CI {intervals['roc_auc_ci95_low']:.4f}–"
             f"{intervals['roc_auc_ci95_high']:.4f})"
+        )
+        print(
+            f"  Gini={metrics['gini']:.4f} "
+            f"KS={metrics['ks_statistic']:.4f}"
         )
         print(
             f"  AP={metrics['average_precision']:.4f} "

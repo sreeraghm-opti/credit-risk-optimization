@@ -271,3 +271,46 @@ credit-risk-optimization/
 ├── app.py
 ├── download_data.py
 └── README.md
+## Credit Model Diagnostics
+
+The credit-risk pipeline includes several complementary validation and scorecard diagnostics.
+
+### Discrimination
+
+Five-fold stratified out-of-fold validation produced:
+
+| Model | ROC-AUC | Gini | KS | Average Precision | Brier |
+|---|---:|---:|---:|---:|---:|
+| Random Forest | 0.7795 | 0.5590 | 0.4271 | 0.5549 | 0.1346 |
+| Logistic Regression | 0.7241 | 0.4481 | 0.3753 | 0.5039 | 0.1448 |
+
+Bootstrap 95% intervals are reported for ROC-AUC, average precision, and Brier score.
+
+### Calibration
+
+Random Forest out-of-fold calibration diagnostics:
+
+- Calibration intercept: -0.0083
+- Calibration slope: 1.0192
+
+PD-decile analysis compares mean predicted probability of default with observed default frequency across ten risk-ranked groups.
+
+### WoE and Information Value
+
+Weight of Evidence (WoE) and Information Value (IV) are calculated using the training sample. Continuous variables are binned using training-derived quantile bins, while categorical variables are evaluated by category.
+
+The highest-IV features are concentrated among recent repayment-status variables, followed by credit limit and recent payment amounts.
+
+IV is treated as a univariate screening diagnostic rather than evidence that a feature should automatically enter a final production model. High-IV variables should be investigated for leakage and temporal overlap before deployment.
+
+### Population Stability Index
+
+PSI compares the random 80/20 training and test populations using bins learned from the training sample.
+
+The maximum feature-level PSI is 0.0026, indicating minimal distributional difference between these two random samples.
+
+This should not be interpreted as evidence of temporal model stability. Out-of-time validation and production population monitoring would be required for that assessment.
+
+### Limitations
+
+The validation design remains research-oriented. Random cross-validation and random train/test PSI do not capture temporal drift, macroeconomic regime changes, or genuine production population shifts. The historical UCI dataset also does not represent a current bank portfolio. These diagnostics therefore demonstrate the methodology rather than establishing production or regulatory model performance.
