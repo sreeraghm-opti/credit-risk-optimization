@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Jupyter
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
+
+# Editor settings
+.vscode/
+.idea/
+
+# Row-level credit-risk outputs (keep local)
+reports/baseline_test_predictions.csv
+reports/cross_validation_predictions.csv
+reports/model_comparison_predictions.csv
+reports/threshold_test_predictions.csv
+reports/optimized_portfolio_accounts.csv
+reports/customer_ecl_scenarios.csv
+reports/customer_stress_results.csv
+reports/top_stressed_customers.csv
+reports/monte_carlo_scenario_losses.csv
+reports/portfolio_robustness_selections.csv
+reports/market/var_backtest.csv
+reports/market/ewma_backtest.csv
+reports/market/ewma_student_t_backtest.csv
+reports/market/ewma_student_t_corrected.csv
+reports/market/var_model_comparison_daily.csv
+reports/market/var_99_exceptions.csv
