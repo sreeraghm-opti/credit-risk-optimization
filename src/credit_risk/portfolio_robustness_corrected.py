@@ -4,7 +4,7 @@ Portfolio Robustness & Sensitivity Analysis
 ===========================================
 
 Run from the project root:
-    .venv/bin/python portfolio_robustness.py
+    .venv/bin/python src/credit_risk/portfolio_robustness_corrected.py
 
 Tests the sensitivity of constrained portfolio selection to:
 - LGD assumptions
@@ -22,7 +22,7 @@ import pandas as pd
 from scipy.optimize import Bounds, LinearConstraint, milp
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[2]
 DATA_PATH = ROOT / "data" / "raw" / "credit_card_default.csv"
 PREDICTIONS_PATH = ROOT / "reports" / "cross_validation_predictions.csv"
 REPORTS = ROOT / "reports"
@@ -93,7 +93,7 @@ def load_candidates():
         if not path.exists():
             raise FileNotFoundError(
                 f"Required file not found: {path}\n"
-                "Run model_validation.py first."
+                "Run src/credit_risk/model_validation.py first."
             )
 
     data = pd.read_csv(DATA_PATH)

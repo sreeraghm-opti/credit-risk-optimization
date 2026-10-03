@@ -24,7 +24,7 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 # 1. Load data
 # --------------------------------------------------
 
-PROJECT_ROOT = Path(__file__).resolve().parent
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DATA_PATH = PROJECT_ROOT / "data" / "raw" / "credit_card_default.csv"
 REPORT_DIR = PROJECT_ROOT / "reports"
 REPORT_DIR.mkdir(parents=True, exist_ok=True)

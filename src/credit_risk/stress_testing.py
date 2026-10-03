@@ -10,7 +10,7 @@ import pandas as pd
 # MACROECONOMIC CREDIT RISK STRESS TESTING
 # ============================================================
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[2]
 REPORTS = ROOT / "reports"
 
 PREDICTIONS_FILE = REPORTS / "threshold_test_predictions.csv"

@@ -2,7 +2,7 @@
 Cross-validation and uncertainty analysis for the credit-risk project.
 
 Run from the project root:
-    .venv/bin/python model_validation.py
+    .venv/bin/python src/credit_risk/model_validation.py
 
 Outputs:
     reports/cross_validation_metrics.csv
@@ -34,7 +34,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[2]
 DATA_PATH = ROOT / "data" / "raw" / "credit_card_default.csv"
 REPORTS = ROOT / "reports"
 

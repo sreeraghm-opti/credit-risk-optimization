@@ -242,6 +242,19 @@ credit-risk-optimization/
 │   └── Market-risk backtesting results
 │
 ├── src/
+│   ├── credit_risk/
+│   │   ├── baseline_model.py
+│   │   ├── eda.py
+│   │   ├── expected_credit_loss.py
+│   │   ├── fairness_audit.py
+│   │   ├── model_comparison.py
+│   │   ├── model_validation.py
+│   │   ├── monte_carlo_risk.py
+│   │   ├── portfolio_optimization.py
+│   │   ├── portfolio_robustness_corrected.py
+│   │   ├── stress_testing.py
+│   │   └── threshold_analysis.py
+│   │
 │   └── market_risk/
 │       ├── var_engine.py
 │       ├── backtest_var.py
@@ -256,16 +269,5 @@ credit-risk-optimization/
 │   └── test_market_risk.py
 │
 ├── app.py
-├── baseline_model.py
-├── model_comparison.py
-├── model_validation.py
-├── expected_credit_loss.py
-├── monte_carlo_risk.py
-├── stress_testing.py
-├── portfolio_optimization.py
-├── portfolio_robustness.py
-├── portfolio_robustness_corrected.py
-├── fairness_audit.py
-├── threshold_analysis.py
-├── eda.py
+├── download_data.py
 └── README.md

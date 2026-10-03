@@ -11,7 +11,7 @@ from scipy.stats import norm
 # MONTE CARLO PORTFOLIO CREDIT RISK
 # ============================================================
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[2]
 REPORTS = ROOT / "reports"
 INPUT_FILE = REPORTS / "threshold_test_predictions.csv"
 

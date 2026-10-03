@@ -2,7 +2,7 @@
 Constrained credit portfolio selection prototype.
 
 Run from the project root:
-    .venv/bin/python portfolio_optimization.py
+    .venv/bin/python src/credit_risk/portfolio_optimization.py
 
 Uses out-of-fold random-forest PD estimates from model_validation.py.
 The optimisation maximises selected exposure subject to:
@@ -29,7 +29,7 @@ import pandas as pd
 from scipy.optimize import Bounds, LinearConstraint, milp
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[2]
 DATA_PATH = ROOT / "data" / "raw" / "credit_card_default.csv"
 PREDICTIONS_PATH = ROOT / "reports" / "cross_validation_predictions.csv"
 REPORTS = ROOT / "reports"
@@ -53,7 +53,7 @@ def main():
         if not path.exists():
             raise FileNotFoundError(
                 f"Required file not found: {path}\n"
-                "Run model_validation.py first and check the dataset path."
+                "Run src/credit_risk/model_validation.py first and check the dataset path."
             )
 
     data = pd.read_csv(DATA_PATH)

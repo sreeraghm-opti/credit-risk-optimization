@@ -156,7 +156,7 @@ fairness_comparison = load_report("fairness_model_comparison.csv")
 if predictions is None:
     st.error(
         "Missing reports/threshold_test_predictions.csv. "
-        "Run threshold_analysis.py first."
+        "Run src/credit_risk/threshold_analysis.py first."
     )
     st.stop()
 
@@ -218,7 +218,7 @@ if model_metrics is not None:
 else:
     st.info(
         "Model comparison report not found. Run "
-        "`.venv/bin/python model_comparison.py`."
+        "`.venv/bin/python src/credit_risk/model_comparison.py`."
     )
 
 with st.expander("How to interpret these metrics"):
@@ -310,7 +310,7 @@ if ecl is not None:
             "columns. Inspect reports/portfolio_ecl_summary.csv."
         )
 else:
-    st.info("Run expected_credit_loss.py to generate the ECL report.")
+    st.info("Run src/credit_risk/expected_credit_loss.py to generate the ECL report.")
 
 st.caption(
     "ECL proxy = predicted probability of default × exposure proxy × assumed LGD. "
@@ -368,7 +368,7 @@ if monte_carlo is not None:
             st.pyplot(fig)
             plt.close(fig)
 else:
-    st.info("Run monte_carlo_risk.py to generate Monte Carlo results.")
+    st.info("Run src/credit_risk/monte_carlo_risk.py to generate Monte Carlo results.")
 
 st.caption(
     "The common-factor correlation assumption is illustrative and has not "
@@ -420,7 +420,7 @@ if stress is not None:
             chart = plot_values.set_index(scenario_col)[ecl_stress_col] / 1_000_000
             st.bar_chart(chart, y_label="ECL proxy (millions)")
 else:
-    st.info("Run stress_testing.py to generate stress-testing results.")
+    st.info("Run src/credit_risk/stress_testing.py to generate stress-testing results.")
 
 st.caption(
     "Stress scenarios apply illustrative PD multipliers; they are not "
@@ -481,7 +481,7 @@ if fairness is not None:
 else:
     st.info(
         "Fairness report not found. Run "
-        "`.venv/bin/python fairness_audit.py`."
+        "`.venv/bin/python src/credit_risk/fairness_audit.py`."
     )
 
 with st.expander("Fairness interpretation cautions"):
@@ -547,7 +547,7 @@ if top_customers is not None:
         hide_index=True,
     )
 else:
-    st.info("Run stress_testing.py to generate the customer-level report.")
+    st.info("Run src/credit_risk/stress_testing.py to generate the customer-level report.")
 
 
 # ---------------------------- Footer ----------------------------

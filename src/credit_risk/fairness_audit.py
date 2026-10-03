@@ -2,7 +2,7 @@
 Fairness and sensitive-feature audit for the credit-risk project.
 
 Run from the project root:
-    .venv/bin/python fairness_audit.py
+    .venv/bin/python src/credit_risk/fairness_audit.py
 
 Outputs:
     reports/fairness_group_metrics.csv
@@ -35,7 +35,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[2]
 DATA_PATH = ROOT / "data" / "raw" / "credit_card_default.csv"
 REPORTS = ROOT / "reports"
 TARGET = "default_payment_next_month"
